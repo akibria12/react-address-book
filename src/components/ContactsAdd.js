@@ -18,9 +18,7 @@ function ContactsAdd(props) {
   //TODO: Implement controlled form
   //send POST to json server on form submit
   const navigate = useNavigate();
-  const goToContactList = () => {
-    navigate("/contacts");
-  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -38,9 +36,10 @@ function ContactsAdd(props) {
       }),
     })
       .then((res) => res.json())
-      .then((newData) => setContacts({ ...contacts, newData }));
+      .then((newData) => setContacts([...contacts, newData]));
     console.log("new details added", contacts);
     setNewPerson(initialFormState); // setContacts(contacts);
+    navigate("/contacts");
   };
   const handleChange = (e) => {
     const value = e.target.value;
@@ -141,12 +140,7 @@ function ContactsAdd(props) {
       />
 
       <div className="actions-section">
-        <button
-          className="button blue"
-          type="submit"
-          //onClick={goToContactList}>
-        >
-          {" "}
+        <button className="button blue" type="submit">
           Create
         </button>
       </div>

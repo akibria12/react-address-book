@@ -23,6 +23,10 @@ function ContactsList(props) {
                 <Link to={`/contacts/${contact.id}/`} state={{ contact }}>
                   View
                 </Link>
+                <button className="button blue" type="submit">
+                  {" "}
+                  Delete
+                </button>
               </p>
             </li>
           );

@@ -43,7 +43,7 @@ export default function App() {
               <ContactsAdd contacts={contacts} setContacts={setContacts} />
             }
           />
-          {/* <Route path="/contacts" element={<ContactsList contacts={contacts}/>}/> */}
+
           {/* TODO: Add routes here  */}
         </Routes>
       </main>
