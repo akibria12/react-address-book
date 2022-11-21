@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, Route, Routes, useParams } from "react-router-dom";
+import { Link, Navigate, Route, Routes, useParams } from "react-router-dom";
 import ContactsList from "./components/ContactsList";
 import ContactsAdd from "./components/ContactsAdd";
 import ContactsView from "./components/ContactsView";
@@ -24,7 +24,10 @@ export default function App() {
           <li>
             <Link to="/contacts">Contacts List</Link>
           </li>
-          <li>Add New Contact</li>
+          <li>
+            {" "}
+            <Link to="/contacts/add"> New Contact</Link>
+          </li>
         </ul>
       </nav>
       <main>
@@ -34,6 +37,13 @@ export default function App() {
             element={<ContactsList contacts={contacts} />}
           />
           <Route path="/contacts/:id" element={<ContactsView />} />
+          <Route
+            path="/contacts/add"
+            element={
+              <ContactsAdd contacts={contacts} setContacts={setContacts} />
+            }
+          />
+          {/* <Route path="/contacts" element={<ContactsList contacts={contacts}/>}/> */}
           {/* TODO: Add routes here  */}
         </Routes>
       </main>
