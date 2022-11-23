@@ -38,7 +38,7 @@ function ContactsAdd(props) {
       .then((res) => res.json())
       .then((newData) => setContacts([...contacts, newData]));
     console.log("new details added", contacts);
-    setNewPerson(initialFormState); // setContacts(contacts);
+    setNewPerson(initialFormState);
     navigate("/contacts");
   };
   const handleChange = (e) => {

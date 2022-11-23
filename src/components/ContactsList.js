@@ -1,19 +1,18 @@
 import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import DeleteContact from "./DeleteContact";
 
 function ContactsList(props) {
   //"contacts" must be passed as prop to this component
-  const { contacts, setContacts, updateContact } = props;
+  const { contacts, deleteContact } = props;
   console.log(contacts);
 
-  function deleteContact(id) {
+  function ContactDelete(id) {
     fetch(`http://localhost:4000/contacts/${id}`, {
       method: "DELETE",
     }).then((result) => {
       result.json().then((resp) => {
         console.log(resp);
-        updateContact();
+        deleteContact();
       });
     });
   }
@@ -36,7 +35,11 @@ function ContactsList(props) {
                 <Link to={`/contacts/${contact.id}/`} state={{ contact }}>
                   View
                 </Link>
-                <button onClick={() => deleteContact(contact.id)}>
+
+                <Link to={`/contacts/edit/${contact.id}`} state={{ contact }}>
+                  Edit
+                </Link>
+                <button onClick={() => ContactDelete(contact.id)}>
                   Delete
                 </button>
               </p>
